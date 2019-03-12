@@ -1,0 +1,15 @@
+{% load "project/base.html"}
+{% block content2 %}
+    <p>You searched for: <strong>{{ query }}</strong></p>
+
+    {% if posts %}
+    <p>Found {{ posts|length }} posts{{ posts|pluralize }}.</p>
+    <ul>
+        {% for post in posts %}
+        <li>{{ post.title }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No books matched your search criteria.</p>
+    {% endif %}
+{% endblock content2 %}

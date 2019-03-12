@@ -1,0 +1,47 @@
+{% extends "project/base.html" %}
+{% block content1 %}
+<div class="jumbotron text-center" style="background-color:rgb(128, 0, 0, 0.2);color:#800000">
+		<span>
+		<!--<img src="https://pbs.twimg.com/profile_images/586412264527245313/SDs3tK-U_400x400.png" class="img-rounded img-thumbnail">-->
+		</span>
+		<h1>Welcome to Somaiya Crowdfunding</h1>
+		<p>The perfect place for your first step to a better future</p> 
+	</div>
+{% endblock %}
+{% block content2 %}
+					{% for posts in posts %}
+					<article class="media content-section">
+							<div class="media-body">
+								<div class="article-metadata">
+									<img class="rounded-circle article-img" src="{{ posts.author.profile.image.url }}">
+									<a class="mr-2" href="{% url 'user-projects' posts.author.username %}">{{ posts.author }}</a>
+									<small class="text-muted">{{ posts.date_posted|date:"F d, Y" }}</small>
+								</div>
+								
+								<h2><a class="article-title" href="{% url 'project-details' posts.id %}">{{ posts.title }}</a></h2>
+								<br>
+								<img src="{{ posts.img.url }}" style="width:100%;height:auto">
+								<hr>
+								<p class="article-content">{{ posts.content }}</p>
+					</article>	
+					{% endfor %}
+{% endblock %}
+	    
+{% block content3 %}
+	<h3>Our Sidebar</h3>
+	<div class="content-section">
+	<p class='text-muted'>You can put any information here you'd like.
+	<ul class="list-group">
+	  <li class="list-group-item list-group-item-light">Latest Posts</li>
+	  <li class="list-group-item list-group-item-light">Announcements</li>
+	  <li class="list-group-item list-group-item-light">
+		<form method='' action=''>
+			  <input type="search" name="q" placeholder="Search projects" value='{{ request.GET.q }}'>
+			  <button type="submit" >Search</button>
+		</form>
+	  </li>
+	  <li class="list-group-item list-group-item-light">etc</li>
+	</ul>
+	</p>
+	</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "project/base.html" %}
+{% block content2 %}
+                    {% for posts in posts %}
+                        
+                            <article class="media content-section">
+                                    <div class="media-body">
+                                        <div class="article-metadata">
+                                            <img class="rounded-circle article-img" src="{{ posts.author.profile.image.url }}">
+                                            <a class="mr-2" href="#">{{ posts.author }}</a>
+                                            <small class="text-muted">{{ posts.date_posted|date:"F d, Y" }}</small>
+                                        </div>
+                                        
+                                        <h2><a class="article-title" href="{% url 'project-details' posts.id %}">{{ posts.title }}</a></h2>
+                                        <br>
+                                        <img src="{{ posts.img.url }}" style="width:100%;height:auto">
+                                        <hr>
+                                        <p class="article-content">{{ posts.content }}</p>
+                            </article>	
+                        
+					{% endfor %}
+{% endblock %}

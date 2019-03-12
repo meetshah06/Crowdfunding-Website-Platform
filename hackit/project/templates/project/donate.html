@@ -1,0 +1,13 @@
+{% extends "project/base.html"%}
+{% block content2 %}
+<form id="sign" class =  style="margin-right: 30%;margin-left: 30%; font-size: 25px;" method="post" action="/donate/">
+			{% csrf_token %}
+			<fieldset style="border-radius:15px ">
+				<legend style="color:white ; font-size:150% ;"> Payment for your order</legend><br>Name<br>
+				<input type="text" id="name" name="name"  autofocus required="" placeholder="Name.."><br>Email-id: <br>
+				<input type="email" id="email" name="email" required="" placeholder="Email-id.."><br>Amount <br>
+				<input name = "amount" type = "number" id="amount" placeholder="Amount.." required=""><br>
+				<button class="btn btn-success" type="submit"  value="Submit">
+			</fieldset>
+		</form>
+{% endblock %}
